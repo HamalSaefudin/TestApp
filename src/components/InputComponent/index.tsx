@@ -105,7 +105,6 @@ function InputComponent(props: InputComponentProps) {
             }}
           >
             <Ionicons
-              Ionicons
               name={secureText ? 'eye-off-outline' : 'eye-outline'}
               size={26}
               color="#B4B4B4"

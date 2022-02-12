@@ -1,0 +1,6 @@
+- Dashboard interface
+- Config module resolver for root project
+- Config navigation reset
+- Config redux persist
+- Fixing inline style
+- Create Header component

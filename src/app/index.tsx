@@ -1,11 +1,12 @@
+import AuthSelectionContainer from '@modules/Authentication/Containers/AuthSelectionContainer';
+import LoginContainer from '@modules/Authentication/Containers/LoginContainer';
+import DashboardContainer from '@modules/Dashboard/Container/DashboardContainer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import AuthSelectionContainer from '@modules/Authentication/Containers/AuthSelectionContainer';
-import Route from './Routes';
-import LoginComponent from '@modules/Authentication/Components/LoginComponent';
 import { Provider } from 'react-redux';
 import { store } from './Redux';
+import Route from './Routes';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,7 +18,8 @@ export default function App() {
             name={Route.AuthSelection}
             component={AuthSelectionContainer}
           />
-          <Stack.Screen name={Route.Login} component={LoginComponent} />
+          <Stack.Screen name={Route.Login} component={LoginContainer} />
+          <Stack.Screen name={Route.Dashboard} component={DashboardContainer} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -3,10 +3,14 @@ import Button from '@components/Button';
 import InputComponent from '@components/InputComponent';
 import View from '@components/View';
 import React from 'react';
-import { Text } from 'react-native';
+import { ActivityIndicator, Image, Text } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
-export default function LoginComponent() {
+export default function LoginComponent(props: any) {
+  const { socmedOptions, handleLogin, isLoading } = props;
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   return (
     <View style={{ paddingHorizontal: 20, flex: 1, backgroundColor: 'white' }}>
       <View
@@ -54,6 +58,7 @@ export default function LoginComponent() {
         containerStyle={{ marginTop: 20 }}
         placeholderTextColor="#858585"
         placeholder="Enter your username"
+        onChange={setUsername}
       />
       <InputComponent
         type="password"
@@ -67,11 +72,15 @@ export default function LoginComponent() {
         containerStyle={{ marginTop: 15 }}
         placeholderTextColor="#858585"
         placeholder="Enter your password"
+        onChange={setPassword}
       />
       <Text style={{ color: '#3570D6', fontSize: 12, marginTop: 15 }}>
         Forget Password
       </Text>
       <Button
+        onPress={() => {
+          handleLogin(username, password);
+        }}
         style={{
           backgroundColor: '#3570D6',
           paddingVertical: 15,
@@ -79,8 +88,16 @@ export default function LoginComponent() {
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 10,
+          flexDirection: 'row',
         }}
       >
+        {isLoading && (
+          <ActivityIndicator
+            size="small"
+            color="white"
+            style={{ marginRight: 10 }}
+          />
+        )}
         <Text style={{ color: 'white', fontSize: 16, fontWeight: '500' }}>
           Log In
         </Text>
@@ -96,30 +113,30 @@ export default function LoginComponent() {
           marginTop: 15,
         }}
       >
-        <View
-          style={{
-            height: 45,
-            width: 45,
-            backgroundColor: 'red',
-            marginHorizontal: 10,
-          }}
-        />
-        <View
-          style={{
-            height: 45,
-            width: 45,
-            backgroundColor: 'red',
-            marginHorizontal: 10,
-          }}
-        />
-        <View
-          style={{
-            height: 45,
-            width: 45,
-            backgroundColor: 'red',
-            marginHorizontal: 10,
-          }}
-        />
+        {socmedOptions.map(({ icon, key }: any) => (
+          <View
+            key={key.toString()}
+            style={{
+              height: 45,
+              width: 45,
+              marginHorizontal: 10,
+              borderWidth: 1,
+              borderColor: '#EFEFEF',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 8,
+            }}
+          >
+            <Image
+              source={icon}
+              resizeMode="contain"
+              style={{
+                height: 30,
+                width: 30,
+              }}
+            />
+          </View>
+        ))}
       </View>
     </View>
   );

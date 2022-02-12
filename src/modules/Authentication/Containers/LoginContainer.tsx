@@ -1,6 +1,38 @@
 import React from 'react';
+import { Keyboard } from 'react-native';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import ReduxState from '../../../app/ReduxState';
 import LoginComponent from '../Components/LoginComponent';
+import { onPostLogin } from '../Store/AuthenticationActions';
 
-export default function LoginContainer(props: any) {
-  return <LoginComponent {...props} />;
+function LoginContainer(props: any) {
+  const socMedOptions = [
+    {
+      key: 1,
+      icon: require('@property/images/google-logo.png'),
+    },
+    {
+      key: 2,
+      icon: require('@property/images/facebook-logo.png'),
+    },
+    {
+      key: 3,
+      icon: require('@property/images/apple-logo.png'),
+    },
+  ];
+  return <LoginComponent socmedOptions={socMedOptions} {...props} />;
 }
+
+const mapStateToProps = (state: ReduxState) => ({
+  isLoading: state.auth.loadingLogin,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  handleLogin: (username: string, password: string) => {
+    Keyboard.dismiss();
+    onPostLogin({ username, password }, dispatch);
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

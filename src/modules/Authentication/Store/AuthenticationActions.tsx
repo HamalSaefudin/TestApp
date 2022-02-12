@@ -14,8 +14,8 @@ export async function onPostLogin(
 ) {
   dispatch({ type: AuthenticationAction.SET_LOADING_STATE, payload: true });
   try {
-    const { data } = await axios.post(`${base_url}/api/login`, bodyData);
-    dispatch({ type: AuthenticationAction.SET_TOKEN_DATA, payload: data });
+    // const { data } = await axios.post(`${base_url}/api/login`, bodyData);
+    // dispatch({ type: AuthenticationAction.SET_TOKEN_DATA, payload: data });
     Route.navigate(Route.Dashboard);
   } catch (e: any) {
     console.log(e);

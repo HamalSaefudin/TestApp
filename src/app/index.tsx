@@ -10,10 +10,14 @@ import Route from './Routes';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const { token } = store?.getState()?.auth;
   return (
     <Provider store={store}>
       <NavigationContainer ref={Route.navigation}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+          initialRouteName={token ? Route.Dashboard : Route.AuthSelection}
+          screenOptions={{ headerShown: false }}
+        >
           <Stack.Screen
             name={Route.AuthSelection}
             component={AuthSelectionContainer}

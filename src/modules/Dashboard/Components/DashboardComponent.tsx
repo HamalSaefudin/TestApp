@@ -1,9 +1,13 @@
+import Badge from '@components/Badge';
+import Button from '@components/Button';
+import ItemService from '@components/ItemService';
+import ItemPayment from '@components/ItemPayment';
+import Search from '@components/Search';
+import Bpjs from '@property/images/bpjs-icon.svg';
+import EpaySlip from '@property/images/epayslip-icon.svg';
+import Loan from '@property/images/loan-icon.svg';
 import React from 'react';
 import { Text, View } from 'react-native';
-import Button from '@components/Button';
-import Badge from '@components/Badge';
-import Feather from 'react-native-vector-icons/Feather';
-import TextInput from '@components/TextInput';
 
 export default function DashboardComponent() {
   return (
@@ -28,25 +32,7 @@ export default function DashboardComponent() {
         />
         <Badge label="EN" />
       </View>
-      <View
-        style={{
-          marginTop: 20,
-          borderWidth: 1,
-          borderColor: '#C7C4CC',
-          paddingLeft: 10,
-          borderRadius: 20,
-          flexDirection: 'row',
-          alignItems: 'center',
-          height: 40,
-        }}
-      >
-        <Feather name="search" size={20} color="#C7C4CC" />
-        <TextInput
-          style={{ flex: 1, color: 'black', fontSize: 14, marginLeft: 10 }}
-          placeholder="Search your job"
-          placeholderTextColor="#C7C4CC"
-        />
-      </View>
+      <Search />
       <Text
         style={{
           color: 'black',
@@ -63,40 +49,16 @@ export default function DashboardComponent() {
       <View
         style={{
           backgroundColor: '#F3F4F7',
-          paddingVertical: 20,
-          paddingHorizontal: 10,
+          paddingVertical: 15,
           flexDirection: 'row',
           marginTop: 20,
-          borderRadius: 25,
+          borderRadius: 35,
+          justifyContent: 'center',
         }}
       >
-        <View
-          style={{
-            height: 20,
-            width: 50,
-            backgroundColor: '#98999A',
-            flex: 1 / 3,
-            marginHorizontal: 10,
-          }}
-        />
-        <View
-          style={{
-            height: 20,
-            width: 50,
-            backgroundColor: '#98999A',
-            flex: 1 / 3,
-            marginHorizontal: 10,
-          }}
-        />
-        <View
-          style={{
-            height: 20,
-            width: 50,
-            backgroundColor: '#98999A',
-            flex: 1 / 3,
-            marginHorizontal: 10,
-          }}
-        />
+        <ItemPayment icon={<EpaySlip />} title="ePay Slip" />
+        <ItemPayment icon={<Bpjs />} title="BPJS" />
+        <ItemPayment icon={<Loan />} title="Loan" />
       </View>
       <Text
         style={{
@@ -117,6 +79,48 @@ export default function DashboardComponent() {
       >
         Find what you need
       </Text>
+      <View
+        style={{
+          height: 200,
+          borderWidth: 1,
+          marginTop: 20,
+          borderColor: '#ECEDEC',
+          borderRadius: 20,
+          padding: 5,
+        }}
+      >
+        <View
+          style={{
+            flex: 1 / 2,
+            flexDirection: 'row',
+          }}
+        >
+          <ItemService
+            icon={require('@property/images/applicant.png')}
+            title="Applycant"
+          />
+          <ItemService
+            icon={require('@property/images/bookmark.png')}
+            title="Bookmark"
+          />
+        </View>
+        <View
+          style={{
+            height: 50,
+            flex: 1 / 2,
+            flexDirection: 'row',
+          }}
+        >
+          <ItemService
+            icon={require('@property/images/job-posting.png')}
+            title="Job Posting"
+          />
+          <ItemService
+            icon={require('@property/images/your-project.png')}
+            title="Your project"
+          />
+        </View>
+      </View>
     </View>
   );
 }

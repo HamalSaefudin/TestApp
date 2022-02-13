@@ -6,11 +6,9 @@ module.exports = {
       {
         root: ['./'],
         alias: {
-          '@env': './env.config.js',
           '@components': './src/components/',
           '@modules': './src/modules/',
           '@property': './src/property/',
-          '@app': './src/app/',
         },
       },
     ],

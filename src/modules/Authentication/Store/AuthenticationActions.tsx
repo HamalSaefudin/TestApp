@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { base_url } from '@env';
-import { AppAction } from '@app/AppReducer';
-import Route from '@app/Routes';
+import { base_url } from '../../../../env.config';
+import { AppAction } from '../../../app/AppReducer';
+import Route from '../../../app/Routes';
 
 enum AuthenticationAction {
   SET_TOKEN_DATA = '@Authentication/SET_TOKEN',

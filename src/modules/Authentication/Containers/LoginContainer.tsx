@@ -2,7 +2,8 @@ import React from 'react';
 import { Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import ReduxState from '../../../app/ReduxState';
+import ReduxState from '@app/ReduxState';
+import Route from '@app/Routes';
 import LoginComponent from '../Components/LoginComponent';
 import { onPostLogin } from '../Store/AuthenticationActions';
 
@@ -25,13 +26,16 @@ function LoginContainer(props: any) {
 }
 
 const mapStateToProps = (state: ReduxState) => ({
-  isLoading: state.auth.loadingLogin,
+  isLoading: state.app.loading,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   handleLogin: (username: string, password: string) => {
     Keyboard.dismiss();
     onPostLogin({ username, password }, dispatch);
+  },
+  goBack: () => {
+    Route.back();
   },
 });
 

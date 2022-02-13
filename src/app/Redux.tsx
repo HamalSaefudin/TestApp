@@ -6,10 +6,12 @@ import {
   persistStore as reduxPersistStore,
   persistReducer,
 } from 'redux-persist';
+import AppReducer from './AppReducer';
 
 const storage = new MMKVStorage.Loader().initialize();
 
 export const reducer = combineReducers({
+  app: AppReducer,
   auth: persistReducer({ key: 'auth', storage }, AuthenticationReducer),
 });
 

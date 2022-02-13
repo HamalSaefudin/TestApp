@@ -1,5 +1,4 @@
 import {
-  View,
   Text,
   StyleProp,
   ViewStyle,
@@ -9,6 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import TextInput from '@components/TextInput';
+import View from '@components/View';
 import Button from '@components/Button';
 import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';

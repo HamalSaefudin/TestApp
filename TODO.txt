@@ -1,6 +1,6 @@
 - Dashboard interface   *done
 - Config redux persist *done
-- Config navigation reset
-- Fixing inline style
-- Create Header component
+- Config navigation reset *done
+- Fixing inline style *done
+- Create Header component *done
 - Config module resolver for root project

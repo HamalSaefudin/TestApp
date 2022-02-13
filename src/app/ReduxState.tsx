@@ -4,7 +4,9 @@ interface ReduxState {
       accessToken: string;
       refreshToken: string;
     };
-    loadingLogin: boolean;
+  };
+  app: {
+    loading: boolean;
   };
 }
 
